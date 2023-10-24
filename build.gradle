@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'info.solidsoft.pitest' version '1.6.0'
 
 }
 
@@ -8,6 +9,9 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+pitest {
+    junit5PluginVersion = '0.12'
+}
 repositories {
     mavenCentral()
 }
