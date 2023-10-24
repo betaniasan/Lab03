@@ -1,4 +1,5 @@
 class FirstSpecification extends Specification {
+
     def "one plus one should equal two"() {
         expect:
         1 + 1 == 2
@@ -40,4 +41,24 @@ class FirstSpecification extends Specification {
         2 | 2 | 4
         3 | 2 | 9
     }
+    def "Mocking using spock"(){
+
+        def paymentGateway = Mock(PaymentGateway)
+        given:
+        paymentGateway.makePayment(20) >> true
+        when:
+        def result = paymentGateway.makePayment(20)
+        then:
+        result == true
+
+    }
+    def "Should verify notify was called"() {
+        given:
+        def notifier = Mock(Notifier)
+        when:
+        notifier.notify('foo')
+        then:
+        1 * notifier.notify('foo')
+    }
+
 }
